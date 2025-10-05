@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Surprise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #fff0f5;
+            padding: 50px;
+        }
+        #mainMenu {
+            display: none;
+        }
+        .box {
+            width: 200px;
+            height: 100px;
+            background-color: #f9dae2;
+            display: inline-block;
+            margin: 10px;
+            padding: 10px;
+            vertical-align: top;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: transform 0.2s;
+        }
+        .box:hover {
+            transform: scale(1.05);
+        }
+        #wrongPass {
+            color: red;
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hi my love, this is a simple thing i did for you hehe 😘</h1>
+    <p>if you want to enter the main menu you should enter the passcode, you have to guess it:</p>
+
+    <input type="password" id="passcodeInput" placeholder="Enter passcode">
+    <button onclick="checkPasscode()">Enter</button>
+    <p id="wrongPass">Oppsie, that's wrong dummy head guess again (hint: it's a date)</p>
+
+    <div id="mainMenu">
+        <h2>main menu </h2>
+        <div class="box" onclick="alert('A small letter for you my love!')">a small letter for you my love</div>
+        <div class="box" onclick="alert('Songs that remind me of you!')">songs reminds me of you</div>
+        <div class="box" onclick="alert('Letters for you my sweet love!')">letters for you my sweet love</div>
+        <div class="box" id="countdownBox">Countdown</div>
+        <div class="box" onclick="checkSecondPasscode()">smoll album of your hot gf</div>
+        <div class="box" onclick="loveQuiz()">Mini Quiz About Me</div>
+    </div>
+
+    <script>
+        const firstPasscode = "162009";
+
+        function checkPasscode() {
+            const input = document.getElementById("passcodeInput").value;
+            if(input === firstPasscode){
+                document.getElementById("mainMenu").style.display = "block";
+                document.getElementById("passcodeInput").style.display = "none";
+                document.querySelector("button").style.display = "none";
+            } else {
+                const wrong = document.getElementById("wrongPass");
+                wrong.style.display = "block";
+                setTimeout(() => { wrong.style.display = "none"; }, 5000);
+            }
+        }
+
+        function checkSecondPasscode() {
+            let secondPass = prompt("Enter the secret passcode to see the album:");
+            if(secondPass === "i wanna see my sexy girfriend"){
+                alert("yay! You can see the album 😘");
+            } else {
+                alert('Oppsie, that's wrong dummy head guess again (hint: you should say "i wanna see.........")');
+            }
+        }
+
+        // Countdown example
+        const countdownBox = document.getElementById("countdownBox");
+        const targetDate = new Date("2025-12-31T00:00:00").getTime(); // example date
+        setInterval(() => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            if(distance > 0){
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                countdownBox.innerHTML = `Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+            } else {
+                countdownBox.innerHTML = "it's here ❤️";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
+<script>
+</div>
+<script>
+function loveQuiz() {
+    //     const questions = [
+        {
+            question: "what is my favorite color", 
+            options: ["pink", "blue", "white", "purple"], 
+            answer: "white" 
+        },
+        {
+            question: "which snack do i love", 
+            options: ["chocolate", "chips", "ice cream", "cookies"], 
+            answer: "you." 
+        },
+        {
+            question: "what colors my hair", 
+            options: ["dark brown", "light brown", "RED"], 
+            answer: "light brown" 
+        },
+        {
+            question: "what’s my favorite song", 
+            options: ["intro(end of the world)", "anyone else but you", "good looking"], 
+            answer: "anyone else but you"
+        },
+        {
+            question: "do you like me", 
+            options: ["yes, opposite of no, oui, si"], 
+            answer: "yes" 
+        }
+    ];
+
+    let score = 0;
+
+    for (let i = 0; i < questions.length; i++) {
+        const q = questions[i];
+        const userAnswer = prompt(
+            `${q.question}\nOptions: ${q.options.join(", ")}`
+        );
+        if (userAnswer && userAnswer.toLowerCase() === q.answer.toLowerCase()) {
+            alert("correct 😘"); 
+            score++;
+        } else {
+            alert(`Oopsie, not quite! The answer was "${q.answer}"`);
+        }
+    }
+
+    alert(`quiz finished you got ${score} out of ${questions.length} ❤️\nhope you know me well! 😏`); 
+}
+
+// Attach this function to the 6th box in your main menu
+// Example:
+// <div class="box" onclick="loveQuiz()">Mini Love Quiz About Me</div> } </script> 
+</body>
+</script>
